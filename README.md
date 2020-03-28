@@ -110,4 +110,65 @@ Egalement nous avons tester différent heuristiques tel que l'heuristique du nom
 
 Pour finir, c'était pour moi la première fois que je manipulais le langage Prolog. J'ai donc dû apprendre à m'en servir tout en avancant sur le projet.
 
-## ALGO MINMAX - APPLICATION AU TICTACTOE
+## ALGO NEGAMAX - APPLICATION AU TICTACTOE
+
+### 1. Familiarisation avec le problème du TicTacToe 3x3
+
+#### 1.2) Quelle interprétation donnez-vous aux requêtes suivantes :
+```
+?- situation_initiale(S), joueur_initial(J).
+?- situation_initiale(S), nth1(3,S,Lig), nth1(2,Lig,o)
+```
+La première requête permet de définir l'état initial du jeu, ainsi que le joueur qui va commencer.
+La deuxième requête permet de placer un o sur la 3ème ligne colonne 2 du jeu.
+
+#### 1.3) Proposer des requêtes de tests unitaires pour les prédicats alignement_gagnat(A,J) et alignement_perdant(A,J).
+
+```
+?- A = [x,x,x] alignement_gagnant(A,x).
+?- A = [o,o,o] alignement_gagnant(A,x).
+?- A = [_,o,_] alignement_gagnant(A,x).
+?- A = [o,o,o] alignement_gagnant(A,o).
+?- A = [x,x,x] alignement_gagnant(A,o).
+?- A = [_,x,o] alignement_gagnant(A,o).
+```
+Et de même pour alignement_perdant.
+
+### 2. Développemet de l'heuristique h(Joueur,Situation)
+
+#### a) Proposer une requête permettant de tester votre heuristique dans la situation initiale, situation gagnante, situation perdante et situation d'égalité.
+
+```
+?- M=[[_,_,_],[_,_,_],[_,_,_]],heuristique(x,M,H).
+?- M=[[x,x,x],[o,x,o],[o,o,_]],heuristique(x,M,H).
+?- M=[[o,o,o],[x,o,x],[x,x,_]],heuristique(x,M,H).
+?- M=[[x,o,x],[x,o,o],[o,x,x]],heuristique(x,M,H).
+```
+
+### 3. Développemet de l'algorithme Negamax
+
+#### a) Quel prédicat permet de connaître sous forme de liste l'ensemble des couples  [Coord,Situation_Resultante] tels que chaque élément associe le coup d'un joueur et la situation qui en résulte à partir d'une situation donnée.
+
+Il s'agit du prédicat successeurs(J,Etat,Succ).
+
+### 4. Expérimentation et extensions
+
+#### 4.1) Quel est le meilleur coup à jouer et le gain espéré pour une profondeur d'analyse de 1,2,3,4,5,6,7,8,9. 
+
+
+
+#### 4.2) Comment ne pas développer inutilement des situations symétriques de situations déjà développées ? 
+
+Avant de tester une situation, nous effectuons des rotations afin de vérifier que l'état que nous souhaitions tester n'est pas une symétrie d'une situation déjà évaluée.
+
+
+#### 4.3) Que faut-il reprendre pour passer au jeu du puissance 4 ? 
+
+
+Il faudrait agir sur les prédicats alignement gagnant ainsi que définir des règles "d'empilage" afin de respecter le puissance 4.
+
+
+#### 4.4) Comment améliorer l'algorithme en élagant certains coups inutiles (recherche Alpha-Beta) ?
+
+
+Avant de développer une certaine branche, on compare son meilleur coup avec la valeur du meilleur coup des branches déjà explorées. Celle-ci ne sera explorée que si la valeur potentielle de la branche est plus elevée que celle déjà obtenue dans une autre branche.
