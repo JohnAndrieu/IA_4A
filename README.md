@@ -82,7 +82,7 @@ test_time(Runtime) :-
     Runtime is Stop-Start.
 ```
 
-![](img/tests_aetoile.png)
+![](img/tests_astar.png)
 
 On observe qu'au début sur des exemples simple l'heuristique 1 est meilleur mais ensuite la tendance s'inverse. En effet, sur des exemples plus complexes l'heuristique 2 nous permet de résoudre des problèmes que l'heuristique 1 ne nous permet pas de résoudre.
 
