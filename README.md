@@ -84,6 +84,8 @@ test_time(Runtime) :-
 
 ![](img/tests_aetoile.png)
 
+On observe qu'au début sur des exemples simple l'heuristique 1 est meilleur mais ensuite la tendance s'inverse. En effet, sur des exemples plus complexes l'heuristique 2 nous permet de résoudre des problèmes que l'heuristique 1 ne nous permet pas de résoudre.
+
 #### Quelle longueur de séquence peut-on envisager de résoudre pour le Taquin 4x4 ?
 
 On peut résoudre des problèmes de même longueur. En effet, il pourra présenter des situation complexes demandant plus de temps de calcul et de stockage mémoire mais en augmentant le nombre de cases on augmente pas forcément la difficulté car la méthode résolution reste la même.
