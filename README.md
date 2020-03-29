@@ -157,7 +157,9 @@ Il s'agit du prédicat successeurs(J,Etat,Succ).
 
 #### 4.1) Quel est le meilleur coup à jouer et le gain espéré pour une profondeur d'analyse de 1,2,3,4,5,6,7,8,9. 
 
+![](img/tests_negamax.png)
 
+Pour Pmax =  9, nous avons un stack limit exceeded.
 
 #### 4.2) Comment ne pas développer inutilement des situations symétriques de situations déjà développées ? 
 
